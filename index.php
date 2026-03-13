@@ -27,6 +27,10 @@
                   <option value="vip">Camarote VIP</option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label class="form-label">Cupon de desconto</label>
+                <input type="text" class="form-control" name="cupon">
+              </div>
               <button type="submit" class="btn btn-dark w-100">Validar Entrada</button>
             </form>
           </div>
@@ -44,6 +48,8 @@
             // 1. RECOLHA DE DADOS (O "Input" do utilizador)
             $idade = $_POST['idadeUsuario'];
             $bilhete = $_POST['tipoBilhete'];
+            $cupon = $_POST['cupon'];
+
 
             echo "<h4>Resultado da Validação:</h4>";
 
@@ -56,7 +62,7 @@
 
 if ($idade < 18) {
   echo "acesso Negado";
-} else if (($idade >= 18)&&($bilhete == "vip")) {
+} else if (($idade >= 18)&&($bilhete === "vip" || $cupon == "vip")) {
   echo 'Acesso Liberado, È VIP';
 } else {echo "ACESSO PISTA LIBERADO";
 }
